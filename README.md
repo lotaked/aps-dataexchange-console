@@ -44,7 +44,7 @@ This is a **sample console connector** that demonstrates how to use the Autodesk
 
 2. **Development Environment**
    - Visual Studio 2019 or later
-   - .NET Framework 4.8
+   - .NET Framework 4.8 Or Net8
    - Basic knowledge of C#
 
 3. **Access Requirements**
