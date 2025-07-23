@@ -44,7 +44,7 @@ This is a **sample console connector** that demonstrates how to use the Autodesk
 
 2. **Development Environment**
    - Visual Studio 2019 or later
-   - .NET Framework 4.8 Or Net8
+   - .NET Framework 4.8
    - Basic knowledge of C#
 
 3. **Access Requirements**
@@ -94,23 +94,25 @@ Update `src/ConsoleConnector/App.config` with your app credentials:
 # Get help
 >> help
 
-# Set working folder
->> SetFolder
+# Set working folder (using folder URL)
+>> SetFolder [FolderUrl]
+# OR set working folder (using individual parameters)
+>> SetFolder [HubId] [Region] [ProjectUrn] [FolderUrn]
 
 # Create a new exchange
->> CreateExchange -title "My Test Exchange"
+>> CreateExchange [ExchangeTitle]
 
 # Add BREP geometry
->> CreateBrep -title "My Test Exchange"
+>> AddBrep [ExchangeTitle]
 
-# Add parameters
->> AddInstanceParam -title "My Test Exchange" -elementId "12345" -name "Description" -value "Test Description" -type "String"
+# Add instance parameters
+>> AddInstanceParameter [ExchangeTitle] [ElementId] [ParameterName] [ParameterSchema] [ParameterValue] [ParameterValueDataType]
 
 # Sync changes
->> SyncExchangeData -title "My Test Exchange"
+>> SyncExchange [ExchangeTitle]
 
 # Download exchange
->> GetExchange -exchangeId "abc123" -collectionId "def456" -format "STEP"
+>> GetExchange [ExchangeId] [CollectionId] [HubId] [ExchangeFileFormat]
 ```
 
 ### Complete Workflow Test
@@ -135,18 +137,18 @@ This command executes a complete workflow that:
 |---------|-------------|---------|
 | `help` | Display all commands | `help` |
 | `help [command]` | Get command details | `help CreateExchange` |
-| `CreateExchange` | Create new exchange | `CreateExchange -title "Project1"` |
-| `CreateBrep` | Add BREP geometry | `CreateBrep -title "Project1"` |
-| `CreateIfc` | Add IFC geometry | `CreateIfc -title "Project1"` |
-| `CreateMesh` | Add mesh geometry | `CreateMesh -title "Project1"` |
-| `CreatePrimitiveGeometry` | Add primitives | `CreatePrimitiveGeometry -title "Project1" -type "All"` |
-| `AddInstanceParam` | Add instance parameter | `AddInstanceParam -title "Project1" -elementId "123"` |
-| `AddTypeParam` | Add type parameter | `AddTypeParam -title "Project1" -elementId "123"` |
-| `DeleteInstanceParameter` | Remove instance parameter | `DeleteInstanceParameter -title "Project1"` |
-| `DeleteTypeParameter` | Remove type parameter | `DeleteTypeParameter -title "Project1"` |
-| `SyncExchangeData` | Sync exchange | `SyncExchangeData -title "Project1"` |
-| `GetExchange` | Download exchange | `GetExchange -exchangeId "123" -format "STEP"` |
-| `SetFolder` | Set working folder | `SetFolder` |
+| `CreateExchange` | Create new exchange | `CreateExchange [ExchangeTitle]` |
+| `AddBrep` | Add BREP geometry | `AddBrep [ExchangeTitle]` |
+| `AddIFC` | Add IFC geometry | `AddIFC [ExchangeTitle]` |
+| `AddMesh` | Add mesh geometry | `AddMesh [ExchangeTitle]` |
+| `AddPrimitive` | Add primitives | `AddPrimitive [ExchangeTitle] [PrimitiveGeometry]` |
+| `AddInstanceParameter` | Add instance parameter | `AddInstanceParameter [ExchangeTitle] [ElementId] [ParameterName] [ParameterSchema] [ParameterValue] [ParameterValueDataType]` |
+| `AddTypeParameter` | Add type parameter | `AddTypeParameter [ExchangeTitle] [ElementId] [ParameterName] [ParameterSchema] [ParameterValue] [ParameterValueDataType]` |
+| `DeleteInstanceParam` | Remove instance parameter | `DeleteInstanceParam [ExchangeTitle] [ElementId] [ParameterName]` |
+| `DeleteTypeParam` | Remove type parameter | `DeleteTypeParam [ExchangeTitle] [ElementId] [ParameterName]` |
+| `SyncExchange` | Sync exchange | `SyncExchange [ExchangeTitle]` |
+| `GetExchange` | Download exchange | `GetExchange [ExchangeId] [CollectionId] [HubId] [ExchangeFileFormat]` |
+| `SetFolder` | Set working folder | `SetFolder [FolderUrl]` or `SetFolder [HubId] [Region] [ProjectUrn] [FolderUrn]` |
 | `WorkFlowTest` | Run complete test | `WorkFlowTest` |
 | `Exit` | Close application | `Exit` |
 
